@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#ff4fc8">
+<meta name="description" content="Каталог сладостей и молочных продуктов Sweet Crazy. Собирайте заказы и редактируйте каталог прямо на сайте.">
+<title>Sweet Crazy — каталог сладостей</title>
+<link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+<header>
+ <div class="top">
+  <div class="brand"><div class="logo">🍭</div><div><h1>SWEET CRAZY</h1><small>ДЕТСКИЕ ВКУСНЯШКИ</small></div></div>
+  <div class="header-actions"><button class="header-btn" onclick="openAdmin()">⚙️ Управление</button></div>
+ </div>
+ <div class="hero"><div><h2>Мир ярких<br>вкусняшек! 💥</h2><p>Выбирай любимые сладости и собирай заказ</p></div><div class="hero-sticker">🍬🍡</div></div>
+</header>
+<main>
+ <div class="tabs"><button class="tab active" data-sec="sweets" onclick="setSection('sweets')">🍭 Сладости</button><button class="tab" data-sec="dairy" onclick="setSection('dairy')">🥛 Молочные продукты</button></div>
+ <button class="add-section hidden" id="addDairyBtn" onclick="editProduct(null,'dairy')">＋ Добавить молочный продукт</button>
+ <div class="admin-bar hidden" id="adminBar"><span>✏️ Режим редактирования</span><span style="display:flex;gap:6px"><button onclick="editProduct(null,section)">＋ Товар</button><button onclick="openAdmin()">⚙️</button><button onclick="toggleAdmin()">Готово</button></span></div>
+ <div class="toolbar"><input id="search" class="search" placeholder="🔎 Найти вкусняшку..." oninput="render()"><select id="sort" class="filter" onchange="render()"><option value="default">По порядку</option><option value="asc">Сначала дешевле</option><option value="desc">Сначала дороже</option><option value="az">По названию</option></select></div>
+ <div class="chips" id="chips"></div>
+ <div class="summary"><span id="countLabel"></span><span>Цены за единицу упаковки</span></div>
+ <div class="grid" id="products"></div>
+</main>
+<div class="bottom-cart" id="bottomCart" style="display:none"><div><small id="cartCount">0 позиций</small><strong id="cartSum">0 ₽</strong></div><button class="cart-open" onclick="openCart()">Корзина →</button></div>
+<div class="overlay" id="overlay" onclick="if(event.target===this)closeSheet()"><section class="sheet" id="sheet"></section></div>
+<script src="app.js" defer></script>
+</body>
+</html>
